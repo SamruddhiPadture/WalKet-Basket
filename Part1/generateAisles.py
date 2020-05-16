@@ -7,7 +7,7 @@ data ={}       #mapping of orderNo and its ProductIds
 
 #apply looping for multiple inputs after this only otherwise orderList and aisleList will get reset everytime.
 
-fileList=['Desktop/ord1.json','Desktop/ord2.json']
+fileList=['Desktop/ord1.json','Desktop/ord2.json','Desktop/ord3.json'] #<--Add more files for testing if needed.
 
 #with open("Desktop/ord1.json", "r") as read_file:
 for j in range(0,len(fileList)):
@@ -39,7 +39,24 @@ for j in range(0,len(fileList)):
             aisleList.append(''.join(aisle))
             print(aisleList)
 
-
+"""
+Output:
+List of all ordernumbers from multiple json inputs till now:
+['3269129163']
+Dictionary of ordernum mapped to list of products
+{'3269129163': ['PR12ERT45', 'PR45GHT98']}
+['RG']
+List of all ordernumbers from multiple json inputs till now:
+['3269129163', '4269129163']
+Dictionary of ordernum mapped to list of products
+{'3269129163': ['PR12ERT45', 'PR45GHT98'], '4269129163': ['PR01ABC01', 'PR06DEF06', 'PR22STU22']}
+['RG', 'ACB']
+List of all ordernumbers from multiple json inputs till now:
+['3269129163', '4269129163', '3269129163']
+Dictionary of ordernum mapped to list of products
+{'3269129163': ['PR12ERT45', 'PR20PQR20', 'PR35ERT35', 'PR39GHT39'], '4269129163': ['PR01ABC01', 'PR06DEF06', 'PR22STU22']}
+['RG', 'ACB', 'RSBA']
+"""
 
 
 
