@@ -1,0 +1,62 @@
+{
+	"shipToAddress": {
+		"address": {
+			"addreseLineTwo": "",
+			"isPoBox": false,
+			"city": "OSHAWA",
+			"countryCode": "CA",
+			"addresstype": "RESIDENTIAL",
+			"postalCcode": "LIK 2N8",
+			"addressLineOne": "1525 Grandview St N",
+			"stateOrProvinceCode": "ON",
+			"addressLineThree": ""
+		},
+		"phone": {
+			"completeNumber": "9054472333"
+		},
+		"name": {
+			"firstname": "Billie Jo",
+			"lastName": "Wood",
+			"completeName": "Billie Jo Wood"
+		},
+		"email": {
+			"emailaddress": "bjwood@rogers.com"
+		}
+	},
+	"orderTotals": {
+		"qrandTotal": {
+			"currencyAmount": 38.48,
+			"currencyUnit": "CAD"
+		}
+	},
+	"orderNo": "4269129163",
+	"products": [{
+			"productId": "PR01ABC01",
+			"description": "Chicken Salad",
+			"unitPrice": {
+				"currencyAmount": 4.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 5
+		},
+		{
+			"productId": "PR06DEF06",
+			"description": "Rum Cake",
+			"unitPrice": {
+				"currencyAmount": 7.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 2
+		},
+		{
+			"productId": "PR22STU22",
+			"description": "Shower Pins",
+			"unitPrice": {
+				"currencyAmount": 7.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 2
+		}
+	],
+	"event time": "2019-10-12T23:03:23.011-0500"
+}
