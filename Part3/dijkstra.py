@@ -1,5 +1,8 @@
 from collections import defaultdict
 from math import sqrt
+import matplotlib.pyplot as plt
+from PIL import Image
+from pylab import *
 
 #distance calculation
 def distance_between_coords(x1, y1, x2, y2):
@@ -123,6 +126,32 @@ def main():
         print("Cost : ",weight )
         print("------------------------------------------------------------------------")
         cnt+=1
+       
+
+        im = array(Image.open("C:/Users/Dhande/Pictures/Map.PNG"))
+
+        # plot the image
+        imshow(im)
+
+        # some points
+        x=[]
+        y=[]
+        for i in shortest_path_taken:
+            if i in coord_aisles:
+                
+                x.append(coord_aisles[i][0])
+                y.append(coord_aisles[i][1])
+
+        # plot the points with red star-markers
+        plot(x,y,'r*')
+
+        # line plot connecting the first two points
+        plot(x[:],y[:])
+
+        # add title and show the plot
+        title('Path') 
+        show() 
+
        
 main()   
 '''
