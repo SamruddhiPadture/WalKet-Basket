@@ -1,0 +1,72 @@
+{
+	"shipToAddress": {
+		"address": {
+			"addreseLineTwo": "",
+			"isPoBox": false,
+			"city": "OSHAWA",
+			"countryCode": "CA",
+			"addresstype": "RESIDENTIAL",
+			"postalCcode": "LIK 2N8",
+			"addressLineOne": "1525 Grandview St N",
+			"stateOrProvinceCode": "ON",
+			"addressLineThree": ""
+		},
+		"phone": {
+			"completeNumber": "9054472333"
+		},
+		"name": {
+			"firstname": "Billie Jo",
+			"lastName": "Wood",
+			"completeName": "Billie Jo Wood"
+		},
+		"email": {
+			"emailaddress": "bjwood@rogers.com"
+		}
+	},
+	"orderTotals": {
+		"qrandTotal": {
+			"currencyAmount": 38.48,
+			"currencyUnit": "CAD"
+		}
+	},
+	"orderNo": "8269129155",
+	"products": [
+		{
+			"productId": "PR28XYZ28",
+			"description": "Tomatoes",
+			"unitPrice": {
+				"currencyAmount": 27.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 6
+		},
+		{
+			"productId": "PR29XYZ29",
+			"description": "Broccoli",
+			"unitPrice": {
+				"currencyAmount": 24.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 2
+		},
+		{
+			"productId": "PR48GHT48",
+			"description": "Juice",
+			"unitPrice": {
+				"currencyAmount": 7.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 2
+		},
+		{
+			"productId": "PR49GHT49",
+			"description": "Sugar",
+			"unitPrice": {
+				"currencyAmount": 7.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 2
+		}
+	],
+	"event time": "2019-10-12T23:03:23.011-0500"
+}

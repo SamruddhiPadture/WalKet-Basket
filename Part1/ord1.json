@@ -29,7 +29,7 @@
 			"currencyUnit": "CAD"
 		}
 	},
-	"orderNo": "3269129163",
+	"orderNo": "5269129170",
 	"products": [{
 			"productId": "PR12ERT45",
 			"description": "Avian Mineral Water",
@@ -44,6 +44,33 @@
 			"description": "Tide Detergent",
 			"unitPrice": {
 				"currencyAmount": 7.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 2
+		},
+		{
+			"productId": "PR04DEF04",
+			"description": "Sandwich Bread",
+			"unitPrice": {
+				"currencyAmount": 3.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 1
+		},
+		{
+			"productId": "PR13JKL13",
+			"description": "Milk",
+			"unitPrice": {
+				"currencyAmount": 2.00,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 5
+		},
+		{
+			"productId": "PR14JKL14",
+			"description": "Cheese",
+			"unitPrice": {
+				"currencyAmount": 8.99,
 				"currencyUnit": "USD"
 			},
 			"orderedQuantity": 2

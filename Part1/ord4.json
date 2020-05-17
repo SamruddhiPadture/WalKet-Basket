@@ -1,0 +1,70 @@
+{
+	"shipToAddress": {
+		"address": {
+			"addreseLineTwo": "",
+			"isPoBox": false,
+			"city": "OSHAWA",
+			"countryCode": "CA",
+			"addresstype": "RESIDENTIAL",
+			"postalCcode": "LIK 2N8",
+			"addressLineOne": "1525 Grandview St N",
+			"stateOrProvinceCode": "ON",
+			"addressLineThree": ""
+		},
+		"phone": {
+			"completeNumber": "9054472333"
+		},
+		"name": {
+			"firstname": "Billie Jo",
+			"lastName": "Wood",
+			"completeName": "Billie Jo Wood"
+		},
+		"email": {
+			"emailaddress": "bjwood@rogers.com"
+		}
+	},
+	"orderTotals": {
+		"qrandTotal": {
+			"currencyAmount": 38.48,
+			"currencyUnit": "CAD"
+		}
+	},
+	"orderNo": "6269129163",
+	"products": [{
+			"productId": "PR06DEF06",
+			"description": "Rum Cake",
+			"unitPrice": {
+				"currencyAmount": 10.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 3
+		},
+		{
+			"productId": "PR10GHI10",
+			"description": "Beer",
+			"unitPrice": {
+				"currencyAmount": 27.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 6
+		},{
+			"productId": "PR15MNO15",
+			"description": "Bacon",
+			"unitPrice": {
+				"currencyAmount": 24.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 2
+		},
+		{
+			"productId": "PR16MNO16",
+			"description": "Chicken",
+			"unitPrice": {
+				"currencyAmount": 7.99,
+				"currencyUnit": "USD"
+			},
+			"orderedQuantity": 2
+		}
+	],
+	"event time": "2019-10-12T23:03:23.011-0500"
+}
