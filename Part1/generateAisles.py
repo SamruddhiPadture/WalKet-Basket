@@ -1,9 +1,11 @@
 import json
 import csv
 
-orderList = [] #list of all order numbers due to multiple files
-aisleList=[]   #list of all aisle strings of multiple user--to be used for levenstein
-data ={}       #mapping of orderNo and its ProductIds
+
+orderList = []   #list of all order numbers due to multiple files
+aisleList = []   #list of all aisle strings of multiple user--to be used for levenstein
+shelfList = []   #list of all shelves
+data = {}       #mapping of orderNo and its ProductIds
 
 #apply looping for multiple inputs after this only otherwise orderList and aisleList will get reset everytime.
 fileList = []
@@ -35,20 +37,21 @@ for j in range(0,len(fileList)):
         with open('products.csv', 'r') as file:      #read csv file
             reader = csv.reader(file)
             aisle = []
-
+            shelf = []
             for i in range(0,len(productList)):
                 for row in reader:
                     if row[0]==productList[i]:
                         aisle.append(row[2])
+                        shelf.append(row[3])
                         break
-                        
+            shelfList.append(shelf)
             aisle = list(dict.fromkeys(aisle))
             aisleList.append(''.join(aisle))
-
+            
 print("\nOrder to products mapping:\n",data)
 print("\nList of orders:\n",orderList)
-print("\nList of aisles\n",aisleList)
-
+print("\nList of aisles:\n",aisleList)
+print("\nList of shelves:\n",shelfList)
 '''
 output
 (base) F:\WalKet-Basket\Part1>python generateAisles.py
