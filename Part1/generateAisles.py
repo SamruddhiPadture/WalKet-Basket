@@ -6,8 +6,12 @@ aisleList=[]   #list of all aisle strings of multiple user--to be used for leven
 data ={}       #mapping of orderNo and its ProductIds
 
 #apply looping for multiple inputs after this only otherwise orderList and aisleList will get reset everytime.
+fileList = []
 
-fileList=['Desktop/ord1.json','Desktop/ord2.json','Desktop/ord3.json']
+for i in range(1,7):
+    fileList.append("ord"+str(i)+".json")
+
+# fileList=['Desktop/ord1.json','Desktop/ord2.json','Desktop/ord3.json']
 #fileList=["Desktop/ord4.json"]
 #with open("Desktop/ord1.json", "r") as read_file:
 for j in range(0,len(fileList)):
@@ -16,8 +20,8 @@ for j in range(0,len(fileList)):
         #print(jsonInput)
 
         orderList.append(jsonInput['orderNo'])
-        print("List of all ordernumbers from multiple json inputs till now:")
-        print(orderList)
+        # print("List of all ordernumbers from multiple json inputs till now:")
+        # print(orderList)
 
         productList=[]                                      #list of productIds for one user
         
@@ -25,10 +29,10 @@ for j in range(0,len(fileList)):
             productList.append(i['productId'])
 
         data[jsonInput['orderNo']]=productList
-        print("Dictionary of ordernum mapped to list of products")
-        print(data)
+        # print("Dictionary of ordernum mapped to list of products")
+        # print(data)
 
-        with open('Desktop/products.csv', 'r') as file:      #read csv file
+        with open('products.csv', 'r') as file:      #read csv file
             reader = csv.reader(file)
             aisle = []
 
@@ -40,7 +44,26 @@ for j in range(0,len(fileList)):
                         
             aisle = list(dict.fromkeys(aisle))
             aisleList.append(''.join(aisle))
-            print(aisleList)
+
+print("\nOrder to products mapping:\n",data)
+print("\nList of orders:\n",orderList)
+print("\nList of aisles\n",aisleList)
+
+'''
+output
+(base) F:\WalKet-Basket\Part1>python generateAisles.py
+
+Order to products mapping:
+ {'5269129170': ['PR12ERT45', 'PR45GHT98', 'PR04DEF04', 'PR13JKL13', 'PR14JKL14'], '4269129163': ['PR01ABC01', 'PR06DEF06', 'PR22STU22'], '3269129163': ['PR12ERT45', 'PR20PQR20', 'PR35ERT35', 'PR39GHT39'], '6269129163': ['PR06DEF06', 'PR10GHI10', 'PR15MNO15', 'PR16MNO16'], '7269129163': ['PR26XYZ26', 'PR28XYZ28', 'PR29XYZ29', 'PR48GHT48', 'PR49GHT49'], '8269129155': ['PR28XYZ28', 'PR29XYZ29', 'PR48GHT48', 'PR49GHT49']}
+
+List of orders:
+ ['5269129170', '4269129163', '3269129163', '6269129163', '7269129163', '8269129155']
+
+List of aisles
+ ['RGCD', 'ACB', 'RSBA', 'CRM', 'PG', 'PG']
+ 
+'''
+
 
 
 
@@ -61,3 +84,7 @@ Dictionary of ordernum mapped to list of products
 {'3269129163': ['PR12ERT45', 'PR20PQR20', 'PR35ERT35', 'PR39GHT39'], '4269129163': ['PR01ABC01', 'PR06DEF06', 'PR22STU22']}
 ['RG', 'ACB', 'RSBA']
 """
+
+
+
+
