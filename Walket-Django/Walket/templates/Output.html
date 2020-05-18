@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Output</title>
+</head>
+<style type="text/css">
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+.serif {
+  font-family: "Times New Roman", Times, serif;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  font-size: 15px;
+  padding: 8px;
+}
+</style>
+<body>
+
+<table width = 50%>
+<tr>
+<th>Order id</th>
+<th>Aisle</th>
+<th>Shelf</th>
+</tr>
+{% for batch in table %}
+	<tr>
+		{% for b in batch %}
+		<td class="serif">{{b}}</td>
+		{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+
+
+
+</body>
+</html>

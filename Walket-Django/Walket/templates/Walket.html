@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+	
+<style type="text/css">
+	/*input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}*/
+
+
+input#file {
+  display: inline-block;
+  width: 20%;
+  padding: 50px 0 0 0;
+  height: 50px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698394-icon-130-cloud-upload-512.png') center center no-repeat #e4e4e4;
+  border-radius: 20px;
+  background-size: 60px 60px;
+
+}
+.button {
+  background-color: #328fa8;
+  border: none;
+  color: white;
+  padding: 3px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+</style>
+
+<form action = "upload" method="post" enctype="multipart/form-data" align = "center" >
+	{% csrf_token %}
+	<br><br><br><br>
+	Upload JSON files
+	<br><br>
+	<input id="file"type="file" name="jsonfiles" multiple="True"/>
+	<br><br>
+	<button class = "button">Generate batches</button>
+	
+</form>
+
+
+
+
+
+
+</body>
+</html>
