@@ -85,7 +85,8 @@ def main():
     #order=["AB","AB","AD"]
     orders = [[['R1', 'G1', 'C1', 'D1', 'D2'], ['A1', 'C3', 'B1'], ['R1', 'S1', 'BG1', 'FA1']], [['C3', 'R1', 'M1', 'M2'], ['P1', 'P3', 'P4', 'G6', 'G7'], ['P3', 'P4', 'G6', 'G7']]]
     #orders = [[['P1' , 'P2', 'PG1' , 'G8'],['G10','F1', 'F2' , 'A3'],['M1','M2','D1','R3','C1']]]
-    cnt=1 
+    cnt=1
+    col=0
     for i in orders:
         
         coord_aisles = {"start":[123 , 436],"A1":[460 , 356],"A2":[461 , 318],"A3":[461 , 282],
@@ -153,17 +154,14 @@ def main():
         print("Path : ", shortest_path_taken)
         print("Cost : ",weight )
         print("------------------------------------------------------------------------")
-        cnt+=1
-       
-
         im = array(Image.open("C:/Users/Home/Pictures/Map.PNG"))
-
         # plot the image
         imshow(im)
-
         # some points
         x=[]
         y=[]
+        colors=['#1f77b4', '#008000', '#9467bd','#800040',
+        '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf','#9842f5','#a4e60b','#ff1a8c']
         for i in shortest_path_taken:
             if i in coord_aisles:
                 
@@ -172,13 +170,13 @@ def main():
 
         # plot the points with red star-markers
         plot(x,y,'r*')
-
         # line plot connecting the first two points
-        plot(x[:],y[:])
-
+        plot(x[:],y[:],colors[col])
+        col+=1
         # add title and show the plot
         title('Path') 
-        show() 
+        show()
+        cnt+=1
       
        
 main()   
