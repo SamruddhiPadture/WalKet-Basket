@@ -7,7 +7,7 @@
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 50%;
+  width: 80%;
 }
 .serif {
   font-family: "Times New Roman", Times, serif;
@@ -21,11 +21,14 @@ td, th {
 </style>
 <body>
 
-<table width = 50%>
+<table align = "center">
 <tr>
+<th>Batch number</th>
 <th>Order id</th>
 <th>Aisle</th>
 <th>Shelf</th>
+<th>Optimal path</th>
+<th>Cost</th>
 </tr>
 {% for batch in table %}
 	<tr>
@@ -34,6 +37,31 @@ td, th {
 		{% endfor %}
 	</tr>
 {% endfor %}
+</table>
+<br>
+<!-- <img src="http://localhost:8000/static/path1.png" align="center" style="width:400px;height:500px;"> -->
+<div id = "path" align = "center">
+
+	{%for img in imgnames%}
+	<br>
+	<img src="http://localhost:8000/static/{{img}}" align="center" style="width:500px;height:500px;"><br>
+	{%endfor %}
+</div>
+
+<br>
+<table align = "center"> 	
+	
+
+
+{%for items in paths_table%}
+<tr>
+{%for item in items %}
+	<td>{{item}}</td>
+
+{%endfor%}
+</tr>
+
+{%endfor%}
 </table>
 
 
