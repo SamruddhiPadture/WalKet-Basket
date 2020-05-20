@@ -157,7 +157,7 @@ def main():
         
        
 
-        im = array(Image.open("C:/Users/Dhande/Pictures/Map.PNG"))
+        im = array(Image.open("Map.PNG"))
 
         # plot the image
         imshow(im)
