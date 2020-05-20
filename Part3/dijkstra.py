@@ -102,8 +102,6 @@ def actual_path(node_list, edges, start):
     #print("Total weight = ",total_weight)
         visited.append(current_node)
     unvisited.remove(current_node)
-    
-    
     return  total_weight 
 
 def main():
@@ -144,8 +142,6 @@ def main():
                 if i not in unique_list and i in coord_aisles: 
                     unique_list.append(i)
         
-                  
-    
         print("List of unique shelves from the order : ",unique_list)
         list_coords = []
        
@@ -154,8 +150,6 @@ def main():
                 list_coords.append(coord_aisles[i])
                 #print("list == ",coord_aisles[i])
         print("List of coordinates of the unique_list : ",list_coords)
-        
-    
         dict1 = {}
         i=0
         for key in unique_list:#A dictionary to label the order with simple index values i.e mapping start = 1, A1 = 2.... 
@@ -166,16 +160,12 @@ def main():
         #print("List ---  ",list_coords)
         coords, edges = graph(list_coords)
         #print("coords == ",coords) 
-        
-        
         sp,weight = shortest_path(coords, edges, 1)
         actual_weight = actual_path(coords, edges, 1)
         total_cost += weight
         actual_total_cost += actual_weight
         shortest_path_taken = []
-        print(sp) 
-        
-
+        print(sp)
         def get_key(val): 
             for key, value in dict1.items():  
                 if val == value: 
@@ -219,14 +209,8 @@ def main():
                 #print("user " + point + "color = ", colors[col])     
             col+=1
         #print("Current batch =",current_batch)    
-
-        # plot the points with red star-markers
-       
-
-        # line plot connecting the first two points
+        # line plot connecting the all the points
         plot(x[:],y[:])
-       
-
         # add title and show the plot
         title('Path for batch '+str(cnt)) 
         show()  
