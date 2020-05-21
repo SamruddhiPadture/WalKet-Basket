@@ -78,6 +78,31 @@ def shortest_path(node_list, edges, start):
         visited.append(current_node)
     return visited, total_weight 
 
+def actual_path(node_list, edges, start):
+    neighbor = 0
+    unvisited = []
+    visited = []
+    total_weight = 0
+    current_node = start
+    #print(node_list)
+    for node in node_list:
+        if node[2] == start:
+            visited.append(start)
+        else:
+            unvisited.append(node[2])
+    
+    #while unvisited:
+    for index, neighbor in enumerate(unvisited):
+           
+        current_weight = edges[start, neighbor] 
+        current_node = neighbor
+        total_weight += current_weight
+        
+        start =  current_node
+    #print("Total weight = ",total_weight)
+        visited.append(current_node)
+    unvisited.remove(current_node)
+    return  total_weight 
 
 def main():
       
@@ -86,7 +111,8 @@ def main():
     orders = [[['R1', 'G1', 'C1', 'D1', 'D2'], ['A1', 'C3', 'B1'], ['R1', 'S1', 'BG1', 'FA1']], [['C3', 'R1', 'M1', 'M2'], ['P1', 'P3', 'P4', 'G7'], ['P3', 'P4', 'G7']]]
     #orders = [[['P1' , 'P2', 'PG1' , 'G8'],['G10','F1', 'F2' , 'A3'],['M1','M2','D1','R3','C1']]]
     cnt=1
-     
+    total_cost=0
+    actual_total_cost=0
     for i in orders:
         col=0
         coord_aisles = {"start":[123 , 436],"A1":[460 , 356],"A2":[461 , 318],"A3":[461 , 282],
@@ -116,8 +142,6 @@ def main():
                 if i not in unique_list and i in coord_aisles: 
                     unique_list.append(i)
         
-                  
-    
         print("List of unique shelves from the order : ",unique_list)
         list_coords = []
        
@@ -126,8 +150,6 @@ def main():
                 list_coords.append(coord_aisles[i])
                 #print("list == ",coord_aisles[i])
         print("List of coordinates of the unique_list : ",list_coords)
-        
-    
         dict1 = {}
         i=0
         for key in unique_list:#A dictionary to label the order with simple index values i.e mapping start = 1, A1 = 2.... 
@@ -138,13 +160,12 @@ def main():
         #print("List ---  ",list_coords)
         coords, edges = graph(list_coords)
         #print("coords == ",coords) 
-        
-        
         sp,weight = shortest_path(coords, edges, 1)
+        actual_weight = actual_path(coords, edges, 1)
+        total_cost += weight
+        actual_total_cost += actual_weight
         shortest_path_taken = []
-        print(sp) 
-        
-
+        print(sp)
         def get_key(val): 
             for key, value in dict1.items():  
                 if val == value: 
@@ -156,9 +177,8 @@ def main():
         print("Batch no : ", cnt)
         print("Path : ", shortest_path_taken)
         print("Cost : ",weight )
+        print("Actual cost : ",actual_weight)
         print("------------------------------------------------------------------------")
-        
-       
 
         im = array(Image.open("Map.PNG"))
         # im = array(Image.open("C:/Users/Home/Pictures/Map.PNG"))
@@ -176,36 +196,27 @@ def main():
                 x.append(coord_aisles[i][0])
                 y.append(coord_aisles[i][1])
 
-        
-        batch=0
-        u = 1
         plot(x[0],y[0],'r*')
         for user in current_batch:
             for point in user:
                 if point in shortest_path_taken:
                     ind = shortest_path_taken.index(point)
-                    print(ind)
+                    #print(ind)
                     #for (a, b) in zip(x,y):
                     if(coord_aisles[point][0] == x[ind] and coord_aisles[point][1] == y[ind]):
                         plot(x[ind],y[ind],colors[col],marker='*')
                         
-                #print("user " + point + "color = ", colors[col])
-
-                   
+                #print("user " + point + "color = ", colors[col])     
             col+=1
         #print("Current batch =",current_batch)    
-
-        # plot the points with red star-markers
-       
-
-        # line plot connecting the first two points
+        # line plot connecting the all the points
         plot(x[:],y[:])
-       
-
         # add title and show the plot
-        title('Path for order '+str(cnt)) 
+        title('Path for batch '+str(cnt)) 
         show()  
-        cnt+=1 
+        cnt+=1
+    print("Total cost for all orders in all batches : ",total_cost)
+    print("Total cost for all orders without batching : ",actual_total_cost) 
        
 main()
 
