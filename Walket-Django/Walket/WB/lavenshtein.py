@@ -4,9 +4,34 @@ import numpy as np
 
 
 
-def batch(order_to_products_mapping, order_ids, aisles, shelves_list):
+def batch(orig_order_ids, orig_aisles, orig_shelves_list):
+
+    aisles = sorted(orig_aisles, key = orig_aisles.count, 
+                                    reverse = True) 
     length = len(aisles)
-    leven_matrix = np.zeros((length,length))                            #initialise an empty matrix 
+
+    indexes = []
+    indexes_done = []
+    for i in range(0,length):
+        for j in range(0,length):
+            if aisles[i] == orig_aisles[j] and j not in indexes_done:
+                indexes.append(j)
+                indexes_done.append(j)
+    print("******indexes****",indexes)
+    order_ids = []
+    shelves_list = []
+    leven_matrix = np.zeros((length,length),dtype=int)                            #initialise an empty matrix 
+
+    for ind in indexes:
+        order_ids.append(orig_order_ids[ind])
+        shelves_list.append(orig_shelves_list[ind])
+    print("****sorted***")
+    print(aisles)
+    print(order_ids)
+    print(shelves_list)
+    
+    
+    leven_matrix = np.zeros((length,length),dtype=int)                            #initialise an empty matrix 
 
 
     def invalidate(start,id,col):               #once aisles of user are processed, mark them as 999 so that they won't be 
@@ -25,18 +50,18 @@ def batch(order_to_products_mapping, order_ids, aisles, shelves_list):
             if i == j:
                 leven_matrix[i][j] = 999
 
-
+    n = 3
     done = []                                   #list of processed elements
-    batches = []                                #list of aisles in group of 3
-    order_batches = []                          #list of orders in group of 3
-    shelves_batches = []                        #list of shelves corresponding to 3 order_ids
+    batches = []                                #list of aisles in group of n
+    order_batches = []                          #list of orders in group of n
+    shelves_batches = []                        #list of shelves corresponding to n order_ids
     for i in range(0,length):
-        if i not in done and len(batches)!=3:
+        if i not in done and length-len(done)>=n:
             current = aisles[i]
             col = []
-            top3 = []
-            order_3 = []
-            shelves_3 = []
+            top_n = []
+            order_n = []
+            shelves_n = []
 
             for j in range(0,length):
                 if i == j:
@@ -50,31 +75,26 @@ def batch(order_to_products_mapping, order_ids, aisles, shelves_list):
                         col.append(leven_matrix[j][i])      #999              
                     
             sorted_list = sorted(range(len(col)), key=lambda k: col[k])    #sort the column values and get indexes of sorted values.
+            top_indexes = sorted_list[:n-1]                                #select top n-1 indexes  
             
-            id1,id2 = sorted_list[:2]           #get top 2 indexes
-            done.append(id1)                    #mark it as "processed"
-            invalidate(i+1,id1,True)            #mark row and column values to 999
-            done.append(id2)                    
-            invalidate(i+1,id2,True)
-            
-            top3.append(current)
-            top3.append(aisles[id1])
-            top3.append(aisles[id2])
-
-            order_3.append(order_ids[i])
-            order_3.append(order_ids[id1])
-            order_3.append(order_ids[id2])
-
-            shelves_3.append(shelves_list[i])
-            shelves_3.append(shelves_list[id1])
-            shelves_3.append(shelves_list[id2])
-
+            top_n.append(current)
+            order_n.append(order_ids[i])
+            shelves_n.append(shelves_list[i])
+        
+            for id in top_indexes:
+                done.append(id)                    #mark it as "processed"
+                invalidate(i+1,id,True)
+                top_n.append(aisles[id])
+                order_n.append(order_ids[id])
+                shelves_n.append(shelves_list[id])
+                
+                
             if i not in done: done.append(i)
             invalidate(i+1,i,False)
 
-            batches.append(top3)
-            order_batches.append(order_3)
-            shelves_batches.append(shelves_3)
+            batches.append(top_n)
+            order_batches.append(order_n)
+            shelves_batches.append(shelves_n)
 
     left_aisles = []
     left_orders = []
@@ -85,7 +105,7 @@ def batch(order_to_products_mapping, order_ids, aisles, shelves_list):
 
     for i in range(0,length):
         '''
-        as batches of three, if the total number of orders received are not a multiple of three,
+        as batches of three, if the total number of orders received are not a multiple of n,
         orders will be left, add it to "left_aisles" and left_orders
         '''
         if i not in done:           

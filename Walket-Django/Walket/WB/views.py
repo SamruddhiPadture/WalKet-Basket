@@ -28,8 +28,8 @@ def output(request):
 		
 		print("aisleList",aisleList)
 
-		batches, order_batches, shelves_batches = batch(data, orderList, aisleList, shelfList)
-		batchnos, shortest_paths, costs, imgnames = find_path(shelves_batches)
+		batches, order_batches, shelves_batches = batch(orderList, aisleList, shelfList)
+		batchnos, shortest_paths, costs, actual_costs, imgnames = find_path(shelves_batches)
 		
 		length = len(batches)
 		table = []
@@ -43,6 +43,7 @@ def output(request):
 			cell.append(shelves_batches[i])
 			cell.append(shortest_paths[i])
 			cell.append(costs[i])
+			cell.append(actual_costs[i])
 				
 			table.append(cell)
 		print(table)
